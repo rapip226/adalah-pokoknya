@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for you</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ff7eb3,#ff758c,#ffb199,#ffd6e0);
+background-size:400% 400%;
+animation:bgMove 12s infinite alternate;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+@keyframes bgMove{
+0%{background-position:left;}
+100%{background-position:right;}
+}
+
+.section{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:1s;
+}
+
+.section.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(16px);
+padding:40px;
+border-radius:30px;
+box-shadow:0 0 50px rgba(0,0,0,0.35);
+max-width:900px;
+width:90%;
+max-height:85vh;
+text-align:center;
+animation:float 5s ease-in-out infinite;
+display:flex;
+flex-direction:column;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+h1{
+font-family:'Pacifico';
+font-size:3rem;
+margin-bottom:10px;
+text-shadow:0 0 25px rgba(255,255,255,0.8);
+}
+
+.sub{opacity:.9;margin-bottom:25px;}
+
+.nav{
+margin-top:20px;
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+button{
+padding:14px 30px;
+border:none;
+border-radius:40px;
+background:#ff2e63;
+color:white;
+font-size:1rem;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #ff2e63;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+/* FOTO AUTO PORTRAIT 9:16 */
+.gallery img{
+width:100%;
+aspect-ratio:9/16;
+object-fit:cover;
+border-radius:15px;
+transition:.5s;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+.gallery img:hover{transform:scale(1.08);}
+
+/* TEXT SCROLL */
+.longtext{
+text-align:left;
+white-space:pre-line;
+line-height:1.9;
+font-size:1.05rem;
+margin-top:15px;
+overflow-y:auto;
+max-height:45vh;
+padding-right:8px;
+animation:fadeUp 1.5s;
+}
+
+.longtext::-webkit-scrollbar{width:6px;}
+.longtext::-webkit-scrollbar-thumb{
+background:#fff;
+border-radius:10px;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(25px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:fall linear infinite;
+opacity:.8;
+}
+
+@keyframes fall{
+from{transform:translateY(-10vh)}
+to{transform:translateY(110vh)}
+}
+
+.spark{
+position:absolute;
+font-size:14px;
+animation:sparkle 3s linear infinite;
+opacity:.7;
+}
+
+@keyframes sparkle{
+0%{transform:scale(0) rotate(0)}
+50%{transform:scale(1.3) rotate(180deg)}
+100%{transform:scale(0) rotate(360deg)}
+}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop>
+<source src="https://files.catbox.moe/tbgmff.mp3" type="audio/mpeg">
+</audio>
+
+<div class="section active" id="s1">
+<div class="card">
+<h1>happy valentine 🤍</h1>
+<div class="sub">Cieee kagett xixi :3</div>
+<div class="nav">
+<button onclick="startMusic(); next(2)">open</button>
+</div>
+</div>
+</div>
+
+<div class="section" id="s2">
+<div class="card">
+<h1>before you continue</h1>
+<div class="sub">buka pelan' ya</div>
+<p>Semogaa kamu sukaa🤍.</p>
+
+<div class="nav">
+<button onclick="prev(1)">back</button>
+<button onclick="next(3)">continue</button>
+</div>
+</div>
+</div>
+
+<div class="section" id="s3">
+<div class="card">
+<h1>some moments</h1>
+
+<div class="gallery">
+<img src="https://i.postimg.cc/k4Z7cxF7/IMG-1487.jpg">
+<img src="https://i.postimg.cc/TwkJHPpK/IMG-1473.jpg">
+<img src="https://i.postimg.cc/VNm9fttz/IMG-1483.jpg">
+<img src="https://i.postimg.cc/Bv53rjWC/IMG-1443.png">
+<img src="https://i.postimg.cc/431C8jt0/IMG-1205.png">
+<img src="https://i.postimg.cc/N0tqkQyX/IMG-1444.png">
+<img src="https://i.postimg.cc/FzdBQ6dr/IMG-1379.jpg">
+<img src="https://i.postimg.cc/L6fmtCCZ/IMG-1374.jpg">
+<img src="https://i.postimg.cc/T36fCVF4/IMG-1158.jpg">
+</div>
+
+<div class="nav">
+<button onclick="prev(2)">back</button>
+<button onclick="next(4)">next</button>
+</div>
+</div>
+</div>
+
+<div class="section" id="s4">
+<div class="card">
+<h1>for you</h1>
+
+<div class="longtext">
+Happy Valentine Dayy Sayangg💕 hehe pasti kamu kaget yaa xixixi, dann baru pertama kali pastinya, disini aku mau bilang,akuu bangga banget bisa punya kamu, Alhamdulillah Allah Mempertemukan aku dengan muu, Yang dulu Aku cuma bisa when yah when yah akhirnya kesampaian Aku bersyukurr banget bisa ketemu sama kamu, yang awal cuma ketidak sengajaan ketemu di litmatch Sampe bisa lanjut ke Whatsapp, jujur aku masih ga nyangka bisa punya hubungan kayak gini, Setiap hari aku selalu kaya masih ga nyangka aja ntah kenapaa, karna seumur umur aku baru sekali ini bisa punya hubungan kaya ginii, dann selama ini maaf yaa kalo aku masih banyak kurang nyaa dan maaf kalo aku sering ngecewain kamu tanpa aku sadari, dan maaf kalo aku belum bisa memenuhi semua keinginan kamu, semoga kedepan nya aku bisaa lebih memperbaiki diri, dan buat kamuu, akuu bangga banget kamu bisaa sekuatt ini menghadapi rintangan yang sangattt beratt, semoga tuhan memberikan balasan yang setara dengan rintangan mu dan cobaan mu, kamuu kuatt kamuu hebatt kamuu kerenn, kamu harus tetap semangat ya jangan gampang menyerah, Kamu pasti bisaaa!! I Trust Youu!! You Can Do it!!!, dan kamu jangan sering sering insecure ya sayangg, kamu itu cantik, kamu itu manis, kamu itu lucu, kamu itu gemass, aku buktinyaa, bisa sampai tergila gila dengan dirimu, dirimu yang sekarang udah lebih dari cukup bagi ku, semua itu bisa di perbaiki, I Trust you can do it!!, aku berharap kita bisa cepet ketemu yaa, tapi maaf kalo memang tidak bisaa karna bunda aku, Semogaa hubungan kitaa bertahan lama yaa Aku sayang kamu bby, aku ga mau kamu pergi ninggalin aku, aku bener bener beryukur bisa punya kamu, dan aku bener benerr sayangg sama kamuu, I Love You bby🩷,Maaf aku ga bisa ngasih apa apa di hari special ini, Happy Valentine Dayy I love You So Muchh!!🩷🤍 ❤️🩷💗💓💖💝❣️ 🫰🫰🫰🫰🫰🫰🫰
+</div>
+
+<div class="nav">
+<button onclick="prev(3)">back</button>
+</div>
+</div>
+</div>
+
+<script>
+function startMusic(){
+let music = document.getElementById("bgm");
+music.volume = 0.5;
+music.play();
+}
+
+function next(n){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+}
+function prev(n){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="🤍";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+heart.style.fontSize=(Math.random()*25+15)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,300);
+
+function sparkle(){
+const s=document.createElement("div");
+s.classList.add("spark");
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),3000);
+}
+setInterval(sparkle,400);
+</script>
+
+</body>
+</html>
